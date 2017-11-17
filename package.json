@@ -1,0 +1,20 @@
+{
+  "name": "tienda-online",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Armandot1998/Tienda-Online.git"
+  },
+  "author": "Armando",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Armandot1998/Tienda-Online/issues"
+  },
+  "homepage": "https://github.com/Armandot1998/Tienda-Online#readme"
+}
