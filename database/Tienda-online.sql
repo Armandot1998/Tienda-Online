@@ -2,6 +2,7 @@
 --creando la base de datos
 
 CREATE DATABASE tienda_online;
+USE DATABASE tienda_online;
 
 --necesitamos tres tablas: una para celulares, para computadoras y una para televisores.
 
