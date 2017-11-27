@@ -1,40 +1,44 @@
 
---creando la base de datos
+--creamos la base de datos con el nombre "TIENDA-ONLINE"
 
-CREATE DATABASE tienda_online;
+CREATE DATABASE 'tienda_online';
 
---necesitamos tres tablas: una para celulares, para computadoras y una para televisores.
+USE DATABASE 'tienda_online';
 
---creamos la primera tabla con 4 campos: id, nombre, marca, precio.
+CREATE TABLE 'productos' 
+(id_pro INT NOT NULL, 
+nombre_pro VARCHAR(50) NOT NULL, 
+marca_pro VARCHAR(50) NOT NULL, 
+precio_pro DOUBLE NOT NULL, 
+id_tipo INT NOT NULL, 
+PRIMARY KEY(id_pro)
+);
 
-CREATE TABLE IF NOT EXISTS 'celulares' (
+USE DATABASE 'tienda_online';
 
-'id' INT(5) unisigned NOT NULL AUTOINCREMENT, 
-'nombre' VARCHAR(30) NOT NULL, 
-'marca' VARCHAR(30) NOT NULL, 
-'precio' INT(5) NOT NULL, 
-PRIMARY KEY('id')
-) ENGINE=InnoDB DEFAULT CHARACTER SET= utf8;
+SHOW TABLES;
 
---creamos la segunda tabla con los mismos campos que la tabla anterior.
+CREATE TABLE 'tipo_proucto' 
+(id_tipo INT NOT NULL, 
+descripcion TEXT NOT NULL, 
+PRIMARY KEY(id_tipo)
+);
 
-CREATE TABLE IF NOT EXISTS 'computadoras' (
+SHOW TABLES;
 
-'id' INT(5) unisigned NOT NULL AUTOINCREMENT, 
-'nombre' VARCHAR(30) NOT NULL, 
-'marca' VARCHAR(30) NOT NULL, 
-'precio' INT(5) NOT NULL, 
-PRIMARY KEY('id')
-) ENGINE=InnoDB DEFAULT CHARACTER SET= utf8;
+CREATE TABLE 'usuarios'
+(id_uauario INT NOT NULL, 
+nombres VARCHAR(50) NOT NULL, 
+apellidos VARCHAR(50) NOT NULL, 
+correo VARCHAR(50) NOT NULL, 
+contraseña VARCHAR(20) NOT NULL, 
+cedula VARCHAR(10) NOT NULL, 
+id_cargo INT NOT NULL, 
+PRIMARY KEY(id_usuario)
+);
 
---creamos la tercera tabla con los mismos campos que la tabla anterior.
-
-CREATE TABLE IF NOT EXISTS 'televisores' (
-
-'id' INT(5) unisigned NOT NULL AUTOINCREMENT, 
-'nombre' VARCHAR(30) NOT NULL, 
-'marca' VARCHAR(30) NOT NULL, 
-'precio' INT(5) NOT NULL, 
-PRIMARY KEY('id')
-) ENGINE=InnoDB DEFAULT CHARACTER SET= utf8;
-
+CREATE TABLE 'cargo'
+(id_cargo INT NOT NULL, 
+cargo VARCHAR(60) NOT NULL,
+PRIMARY KEY(id_cargo)
+);
