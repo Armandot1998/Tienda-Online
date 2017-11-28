@@ -9,6 +9,12 @@ CREATE TABLE `TipoProducto` (
   PRIMARY KEY (`idTipoProducto`))
 ENGINE = InnoDB;
 
+CREATE TABLE`Cargo` (
+  `idCargo` INT NOT NULL,
+  `cargo` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idCargo`))
+ENGINE = InnoDB;
+
 
 CREATE TABLE `Productos` (
   `idProductos` INT NOT NULL,
@@ -20,13 +26,6 @@ CREATE TABLE `Productos` (
     FOREIGN KEY (`TipoProductoidTipoProducto`)
     REFERENCES `TipoProducto` (`idTipoProducto`))
 ENGINE = InnoDB;
-
-CREATE TABLE`Cargo` (
-  `idCargo` INT NOT NULL,
-  `cargo` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idCargo`))
-ENGINE = InnoDB;
-
 
 CREATE TABLE `Usuarios` (
   `idUsuarios` INT NOT NULL,
