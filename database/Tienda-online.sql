@@ -24,7 +24,7 @@ ENGINE = InnoDB;
 CREATE TABLE`Cargo` (
   `idCargo` INT NOT NULL,
   `cargo` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idCargo`),
+  PRIMARY KEY (`idCargo`))
 ENGINE = InnoDB;
 
 
@@ -35,11 +35,10 @@ CREATE TABLE `Usuarios` (
   `cedula` INT(10) NOT NULL,
   `correo` VARCHAR(45) NOT NULL,
   `contraseÃ±a` VARCHAR(45) NOT NULL,
-  `Cargo_idCargo` INT NOT NULL,
+  `CargoidCargo` INT NOT NULL,
   PRIMARY KEY (`idUsuarios`),
-    FOREIGN KEY (`Cargo_idCargo`)
-    REFERENCES `Cargo` (`idCargo`)
-)
+    FOREIGN KEY (`CargoidCargo`)
+    REFERENCES `Cargo` (`idCargo`))
 ENGINE = InnoDB;
 
 CREATE TABLE `DetalleDeFactura` (
@@ -48,7 +47,7 @@ CREATE TABLE `DetalleDeFactura` (
   `ProductosidProductos` INT NOT NULL,
   PRIMARY KEY (`idDetalleDeFactura`),
     FOREIGN KEY (`ProductosidProductos`)
-    REFERENCES `TiendaOnline`.`Productos` (`idProductos`)
+    REFERENCES `Productos` (`idProductos`)
 )
 ENGINE = InnoDB;
 
