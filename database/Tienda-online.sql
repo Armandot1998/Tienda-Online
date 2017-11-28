@@ -1,9 +1,9 @@
 
 
-CREATE SCHEMA IF NOT EXISTS `TiendaOnline` DEFAULT CHARACTER SET utf8 ;
-USE `TiendaOnline` ;
+CREATE DATABASE `TiendaOnline`;
+USE `TiendaOnline`;
 
-CREATE TABLE IF NOT EXISTS `TiendaOnline`.`TipoProducto` (
+CREATE TABLE `TipoProducto` (
   `idTipoProducto` INT NOT NULL,
   `descripcion` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`idTipoProducto`),
@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS `TiendaOnline`.`TipoProducto` (
 ENGINE = InnoDB;
 
 
-CREATE TABLE IF NOT EXISTS `TiendaOnline`.`Productos` (
+CREATE TABLE `Productos` (
   `idProductos` INT NOT NULL,
   `nombre` VARCHAR(45) NOT NULL,
   `marca` VARCHAR(45) NOT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `TiendaOnline`.`Productos` (
 ENGINE = InnoDB;
 
 
-CREATE TABLE IF NOT EXISTS `TiendaOnline`.`Cargo` (
+CREATE TABLE`Cargo` (
   `idCargo` INT NOT NULL,
   `cargo` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idCargo`),
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `TiendaOnline`.`Cargo` (
 ENGINE = InnoDB;
 
 
-CREATE TABLE IF NOT EXISTS `TiendaOnline`.`Usuarios` (
+CREATE TABLE `Usuarios` (
   `idUsuarios` INT NOT NULL,
   `nombres` VARCHAR(45) NOT NULL,
   `apellidos` VARCHAR(45) NOT NULL,
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `TiendaOnline`.`Usuarios` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `TiendaOnline`.`DetalleDeFactura` (
+CREATE TABLE `DetalleDeFactura` (
   `idDetalleDeFactura` INT NOT NULL,
   `cantidad` INT NULL,
   `ProductosidProductos` INT NOT NULL,
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `TiendaOnline`.`DetalleDeFactura` (
 ENGINE = InnoDB;
 
 
-CREATE TABLE IF NOT EXISTS `TiendaOnline`.`Factura` (
+CREATE TABLE `Factura` (
   `idFactura` INT NOT NULL,
   `fecha` DATE NOT NULL,
   `DetalleDeFacturaidDetalleDeFactura` INT NOT NULL,
