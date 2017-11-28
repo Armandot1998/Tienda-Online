@@ -1,90 +1,90 @@
 
 
-CREATE SCHEMA IF NOT EXISTS `TIENDA_ONLINE` DEFAULT CHARACTER SET utf8 ;
-USE `TIENDA_ONLINE` ;
+CREATE SCHEMA IF NOT EXISTS `TiendaOnline` DEFAULT CHARACTER SET utf8 ;
+USE `TiendaOnline` ;
 
-CREATE TABLE IF NOT EXISTS `TIENDA_ONLINE`.`Tipo_producto` (
-  `idTipo_producto` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `TiendaOnline`.`TipoProducto` (
+  `idTipoProducto` INT NOT NULL,
   `descripcion` VARCHAR(100) NOT NULL,
-  PRIMARY KEY (`idTipo_producto`),
-  UNIQUE INDEX `idTipo_producto_UNIQUE` (`idTipo_producto` ASC))
+  PRIMARY KEY (`idTipoProducto`),
+  UNIQUE INDEX `idTipoProductoUnique` (`idTipoProducto` ASC))
 ENGINE = InnoDB;
 
 
-CREATE TABLE IF NOT EXISTS `TIENDA_ONLINE`.`Productos` (
+CREATE TABLE IF NOT EXISTS `TiendaOnline`.`Productos` (
   `idProductos` INT NOT NULL,
   `nombre` VARCHAR(45) NOT NULL,
   `marca` VARCHAR(45) NOT NULL,
   `precio` DOUBLE NULL,
-  `Tipo_producto_idTipo_producto` INT NOT NULL,
+  `tipoProductoidTipoProducto` INT NOT NULL,
   PRIMARY KEY (`idProductos`),
-  UNIQUE INDEX `idProductos_UNIQUE` (`idProductos` ASC),
-  INDEX `fk_Productos_Tipo_producto_idx` (`Tipo_producto_idTipo_producto` ASC),
-  CONSTRAINT `fk_Productos_Tipo_producto`
-    FOREIGN KEY (`Tipo_producto_idTipo_producto`)
-    REFERENCES `TIENDA_ONLINE`.`Tipo_producto` (`idTipo_producto`)
+  UNIQUE INDEX `idProductosUnique` (`idProductos` ASC),
+  INDEX `fkProductosTipoProductoidx` (`TipoProductoidTipoProducto` ASC),
+  CONSTRAINT `fkProductosTipoProducto`
+    FOREIGN KEY (`TipoProductoidTipoProducto`)
+    REFERENCES `TiendaOnline`.`TipoProducto` (`idTipoProducto`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
-CREATE TABLE IF NOT EXISTS `TIENDA_ONLINE`.`Cargo` (
+CREATE TABLE IF NOT EXISTS `TiendaOnline`.`Cargo` (
   `idCargo` INT NOT NULL,
   `cargo` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idCargo`),
-  UNIQUE INDEX `idCargo_UNIQUE` (`idCargo` ASC))
+  UNIQUE INDEX `idCargoUnique` (`idCargo` ASC))
 ENGINE = InnoDB;
 
 
-CREATE TABLE IF NOT EXISTS `TIENDA_ONLINE`.`Usuarios` (
+CREATE TABLE IF NOT EXISTS `TiendaOnline`.`Usuarios` (
   `idUsuarios` INT NOT NULL,
   `nombres` VARCHAR(45) NOT NULL,
   `apellidos` VARCHAR(45) NOT NULL,
   `cedula` INT(10) NOT NULL,
   `correo` VARCHAR(45) NOT NULL,
-  `contraseÃ±a` VARCHAR(45) NOT NULL,
-  `Cargo_idCargo` INT NOT NULL,
+  `clave` VARCHAR(45) NOT NULL,
+  `CargoidCargo` INT NOT NULL,
   PRIMARY KEY (`idUsuarios`),
-  INDEX `fk_Usuarios_Cargo1_idx` (`Cargo_idCargo` ASC),
-  CONSTRAINT `fk_Usuarios_Cargo1`
-    FOREIGN KEY (`Cargo_idCargo`)
-    REFERENCES `TIENDA_ONLINE`.`Cargo` (`idCargo`)
+  INDEX `fkUsuariosCargo1idx` (`CargoidCargo` ASC),
+  CONSTRAINT `fkUsuariosCargo1`
+    FOREIGN KEY (`CargoidCargo`)
+    REFERENCES `TiendaOnline`.`Cargo` (`idCargo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `TIENDA_ONLINE`.`Detalle_de_factura` (
-  `idDetalle_de_factura` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `TiendaOnline`.`DetalleDeFactura` (
+  `idDetalleDeFactura` INT NOT NULL,
   `cantidad` INT NULL,
-  `Productos_idProductos` INT NOT NULL,
-  PRIMARY KEY (`idDetalle_de_factura`),
-  UNIQUE INDEX `idDetalle_de_factura_UNIQUE` (`idDetalle_de_factura` ASC),
-  INDEX `fk_Detalle_de_factura_Productos1_idx` (`Productos_idProductos` ASC),
-  CONSTRAINT `fk_Detalle_de_factura_Productos1`
-    FOREIGN KEY (`Productos_idProductos`)
-    REFERENCES `TIENDA_ONLINE`.`Productos` (`idProductos`)
+  `ProductosidProductos` INT NOT NULL,
+  PRIMARY KEY (`idDetalleDeFactura`),
+  UNIQUE INDEX `idDetalleDeFacturaUnique` (`idDetalleDeFactura` ASC),
+  INDEX `fkDetalleDeFacturaProductos1idx` (`ProductosidProductos` ASC),
+  CONSTRAINT `fkDetalleDeFacturaProductos1`
+    FOREIGN KEY (`ProductosidProductos`)
+    REFERENCES `TiendaOnline`.`Productos` (`idProductos`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
-CREATE TABLE IF NOT EXISTS `TIENDA_ONLINE`.`Factura` (
+CREATE TABLE IF NOT EXISTS `TiendaOnline`.`Factura` (
   `idFactura` INT NOT NULL,
   `fecha` DATE NOT NULL,
-  `Detalle_de_factura_idDetalle_de_factura` INT NOT NULL,
-  `Usuarios_idUsuarios` INT NOT NULL,
+  `DetalleDeFacturaidDetalleDeFactura` INT NOT NULL,
+  `UsuariosidUsuarios` INT NOT NULL,
   PRIMARY KEY (`idFactura`),
-  UNIQUE INDEX `idtable1_UNIQUE` (`idFactura` ASC),
-  INDEX `fk_Factura_Detalle_de_factura1_idx` (`Detalle_de_factura_idDetalle_de_factura` ASC),
-  INDEX `fk_Factura_Usuarios1_idx` (`Usuarios_idUsuarios` ASC),
-  CONSTRAINT `fk_Factura_Detalle_de_factura1`
-    FOREIGN KEY (`Detalle_de_factura_idDetalle_de_factura`)
-    REFERENCES `TIENDA_ONLINE`.`Detalle_de_factura` (`idDetalle_de_factura`)
+  UNIQUE INDEX `idtable1Unique` (`idFactura` ASC),
+  INDEX `fkFacturaDetalleDeFactura1idx` (`DetalleDeFacturaidDetalleDeFactura` ASC),
+  INDEX `fkFacturaUsuarios1idx` (`UsuariosidUsuarios` ASC),
+  CONSTRAINT `fkFacturaDetalleDeFactura1`
+    FOREIGN KEY (`DetalleDeFacturaidDetalleDeFactura`)
+    REFERENCES `TiendaOnline`.`DetalleDeFactura` (`idDetalleDeFactura`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Factura_Usuarios1`
-    FOREIGN KEY (`Usuarios_idUsuarios`)
-    REFERENCES `TIENDA_ONLINE`.`Usuarios` (`idUsuarios`)
+  CONSTRAINT `fkFacturaUsuarios1`
+    FOREIGN KEY (`UsuariosidUsuarios`)
+    REFERENCES `TiendaOnline`.`Usuarios` (`idUsuarios`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
