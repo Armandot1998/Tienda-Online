@@ -29,7 +29,7 @@ CREATE TABLE `Usuarios` (
   `apellidos` VARCHAR(45) NOT NULL,
   `cedula` INT(10) NOT NULL,
   `correo` VARCHAR(45) NOT NULL,
-  `contraseÃ±a` VARCHAR(45) NOT NULL,
+  `clave` VARCHAR(45) NOT NULL,
   `CargoidCargo` INT NOT NULL,
   PRIMARY KEY (`idUsuarios`),
     FOREIGN KEY (`CargoidCargo`)
@@ -40,7 +40,6 @@ CREATE TABLE `DetalleDeFactura` (
   `idDetalleDeFactura` INT NOT NULL,
   `idProductos` INT NOT NULL, 
   `cantidad` INT NULL,
-  `ProductosidProductos` INT NOT NULL,
   PRIMARY KEY (`idDetalleDeFactura`),
     FOREIGN KEY (`idProductos`)
     REFERENCES `Productos` (`idProductos`)
