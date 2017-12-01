@@ -1,8 +1,4 @@
 
-
-CREATE DATABASE `TiendaOnline`;
-USE `TiendaOnline`;
-
 CREATE TABLE `TipoProducto` (
   `idTipoProducto` INT NOT NULL,
   `descripcion` VARCHAR(100) NOT NULL,
@@ -42,6 +38,7 @@ ENGINE = InnoDB;
 
 CREATE TABLE `DetalleDeFactura` (
   `idDetalleDeFactura` INT NOT NULL,
+  `idProductos` INT NOT NULL, 
   `cantidad` INT NULL,
   `ProductosidProductos` INT NOT NULL,
   PRIMARY KEY (`idDetalleDeFactura`),
