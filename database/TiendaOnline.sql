@@ -11,7 +11,6 @@ CREATE TABLE`Cargo` (
   PRIMARY KEY (`idCargo`))
 ENGINE = InnoDB;
 
-
 CREATE TABLE `Productos` (
   `idProductos` INT NOT NULL,
   `nombre` VARCHAR(45) NOT NULL,
