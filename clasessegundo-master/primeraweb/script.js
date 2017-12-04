@@ -1,3 +1,6 @@
+
+
+
 var urlWS = "";
 $(document).ready(function(){
    urlWS = "http://localhost/sae/server/";
