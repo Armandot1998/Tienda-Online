@@ -29,7 +29,7 @@ CREATE TABLE `Usuarios` (
   `cedula` INT(10) NOT NULL,
   `correo` VARCHAR(45) NOT NULL,
   `clave` VARCHAR(45) NOT NULL,
-  `CargoidCargo` INT NOT NULL,
+  `idCargo` INT NOT NULL,
   PRIMARY KEY (`idUsuarios`),
     FOREIGN KEY (`CargoidCargo`)
     REFERENCES `Cargo` (`idCargo`))
